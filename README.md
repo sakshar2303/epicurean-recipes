@@ -53,4 +53,3 @@ Distributed under the MIT License.
 
 ---
 
-*Designed with ❤️ for the 100/100 Grade.*
