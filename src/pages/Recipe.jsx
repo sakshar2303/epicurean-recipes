@@ -7,10 +7,30 @@ function Recipe() {
   const [details, setDetails] = useState({})
   const [activeTab, setActiveTab] = useState('instructions')
 
+  const [isFavorite, setIsFavorite] = useState(false)
+
   useEffect(() => {
     fetchDetails()
+    checkFavorite()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.name])
+
+  const checkFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
+    setIsFavorite(favorites.some(fav => fav.id === params.name))
+  }
+
+  const toggleFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
+    if (isFavorite) {
+      const filtered = favorites.filter(fav => fav.id !== params.name)
+      localStorage.setItem('favorites', JSON.stringify(filtered))
+    } else {
+      favorites.push({ id: params.name, title: details.title, image: details.image })
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+    setIsFavorite(!isFavorite)
+  }
 
   const fetchDetails = async () => {
     const res = await fetch(
@@ -25,6 +45,12 @@ function Recipe() {
       <div>
         <h2>{details.title}</h2>
         {details.image && <img src={details.image} alt={details.title} />}
+        <FavoriteButton 
+          onClick={toggleFavorite}
+          className={isFavorite ? 'favorite' : ''}
+        >
+          {isFavorite ? '❤️ Saved' : '🤍 Save to Favorites'}
+        </FavoriteButton>
       </div>
       <Info>
         <Button
@@ -47,8 +73,8 @@ function Recipe() {
         )}
         {activeTab === 'ingredients' && (
           <ul>
-            {(details.extendedIngredients || []).map((ing) => (
-              <li key={ing.id}>{ing.original}</li>
+            {(details.extendedIngredients || []).map((ing, index) => (
+              <li key={`${ing.id}-${index}`}>{ing.original}</li>
             ))}
           </ul>
         )}
@@ -140,6 +166,29 @@ const Button = styled.button`
 
 const Info = styled.div`
   flex: 1;
+`
+
+const FavoriteButton = styled.button`
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+
+  &.favorite {
+    background: #fffafa;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  &:hover {
+    background: #fdfdfd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
 `
 
 export default Recipe
