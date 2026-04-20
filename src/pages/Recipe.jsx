@@ -58,49 +58,88 @@ function Recipe() {
 }
 
 const DetailWrapper = styled.div`
-  margin: 5rem 0;
+  margin: 5rem 0rem;
   display: flex;
-  gap: 3rem;
+  gap: 5rem;
   flex-wrap: wrap;
 
-  > div:first-of-type {
-    flex: 1 1 20rem;
-    min-width: 0;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .active {
-    background: linear-gradient(35deg, #494949, #313131);
-    color: white;
-  }
   h2 {
     margin-bottom: 2rem;
+    font-size: 2.5rem;
   }
-  li {
-    font-size: 1.2rem;
-    line-height: 2.5rem;
-  }
-  ul {
-    margin-top: 2rem;
-  }
+
   img {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 2rem;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
+
+  ul {
+    margin-top: 2rem;
+    list-style-type: none;
+    
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+    }
+  }
+
+  div h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    color: var(--text-light);
+    margin-top: 2rem;
+    font-family: 'Inter', sans-serif;
   }
 `
 
 const Button = styled.button`
   padding: 1rem 2rem;
-  color: #313131;
+  color: var(--text-dark);
   background: white;
-  border: 2px solid black;
-  margin-right: 2rem;
+  border: 2px solid var(--text-dark);
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
-  cursor: pointer;
+  border-radius: 0.8rem;
+  transition: all 0.3s ease;
+
+  &.active {
+    background: var(--text-dark);
+    color: white;
+  }
+
+  &:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+  }
 `
 
 const Info = styled.div`
-  flex: 1 1 30rem;
-  min-width: 0;
+  flex: 1;
 `
 
 export default Recipe

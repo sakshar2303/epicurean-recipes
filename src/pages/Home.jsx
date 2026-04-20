@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Popular from '../pages/Popular'
-import Veggie from '../pages/Veggie'
+import TrendingFlavors from './TrendingFlavors'
+import GreenGourmet from './GreenGourmet'
 
 function Home() {
   return (
@@ -11,8 +11,8 @@ function Home() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Veggie />
-      <Popular />
+      <GreenGourmet />
+      <TrendingFlavors />
     </motion.div>
   )
 }

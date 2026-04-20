@@ -10,7 +10,7 @@ import {Wrapper, Card, Gradient } from '../utils/utils';
 
 
 
-function Popular() {
+function TrendingFlavors() {
 
     const [popular, setPopular] = useState([]);
 
@@ -75,5 +75,5 @@ function Popular() {
   )
 }
 
-export default Popular;
+export default TrendingFlavors;
 

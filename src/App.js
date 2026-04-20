@@ -1,34 +1,37 @@
 import styled from 'styled-components'
 import { GiKnifeFork } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
-import Pages from './components/Pages'
+import AppRoutes from './components/AppRoutes'
 
 function App() {
   return (
     <div className="App">
       <Nav>
         <GiKnifeFork />
-        <Logo to={'/'}>RecipeRealm</Logo>
+        <Logo to={'/'}>Epicurean</Logo>
       </Nav>
-      <Pages />
+      <AppRoutes />
     </div>
   )
 }
 
 const Logo = styled(Link)`
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: 'Lobster Two', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: var(--text-dark);
 `
 
 const Nav = styled.div`
-  padding: 4rem 0rem;
+  padding: 3rem 0rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  gap: 0.5rem;
   svg {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
   }
 `
 

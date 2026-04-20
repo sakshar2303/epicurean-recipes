@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import { Link, useParams } from 'react-router-dom'
+import { Grid, ItemCard } from '../utils/utils'
 
-function Cuisine() {
+function WorldKitchen() {
   const [cuisine, setCuisine] = useState([])
   const params = useParams()
 
@@ -27,36 +25,15 @@ function Cuisine() {
       transition={{ duration: 0.5 }}
     >
       {cuisine.map((item) => (
-        <Card key={item.id}>
+        <ItemCard key={item.id}>
           <Link to={`/recipe/${item.id}`}>
             <img src={item.image} alt={item.title} />
             <h4>{item.title}</h4>
           </Link>
-        </Card>
+        </ItemCard>
       ))}
     </Grid>
   )
 }
 
-const Grid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
-  margin: 2rem 0rem;
-`
-
-const Card = styled.div`
-  img {
-    width: 100%;
-    border-radius: 2rem;
-  }
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
-`
-
-export default Cuisine
+export default WorldKitchen

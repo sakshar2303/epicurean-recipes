@@ -30,8 +30,8 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  margin: 0 auto;
-  max-width: 60rem;
+  margin: 2rem auto;
+  max-width: 50rem;
 
   div {
     position: relative;
@@ -39,22 +39,34 @@ const FormStyle = styled.form`
   }
 
   input {
-    border: none;
-    background: linear-gradient(35deg, #494949, #313131);
-    font-size: 1.5rem;
-    color: white;
-    padding: 1rem 3rem;
-    border-radius: 1rem;
+    border: 2px solid transparent;
+    background: white;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    padding: 1rem 3.5rem;
+    border-radius: 2rem;
     outline: none;
     width: 100%;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: var(--hover-shadow);
+    }
+    
+    &::placeholder {
+      color: #b2bec3;
+    }
   }
 
   svg {
     position: absolute;
     top: 50%;
-    left: 1rem;
+    left: 1.5rem;
     transform: translate(0, -50%);
-    color: white;
+    color: var(--primary-color);
+    font-size: 1.2rem;
   }
 `
 

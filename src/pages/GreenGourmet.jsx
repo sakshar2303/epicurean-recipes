@@ -5,7 +5,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-function Veggie() {
+function GreenGourmet() {
 
     const [veggie, setVeggie] = useState([]);
 
@@ -66,4 +66,4 @@ function Veggie() {
   )
 }
 
-export default Veggie
+export default GreenGourmet

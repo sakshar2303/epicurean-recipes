@@ -42,8 +42,8 @@ const List = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0rem;
+  gap: 1.5rem;
+  margin: 3rem 0rem;
 `
 
 const SLink = styled(NavLink)`
@@ -51,33 +51,35 @@ const SLink = styled(NavLink)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 1.5rem;
   text-decoration: none;
-  background: linear-gradient(35deg, #494949, #313131);
-  width: 6rem;
-  height: 6rem;
+  background: white;
+  width: 7rem;
+  height: 5.5rem;
   cursor: pointer;
-  transform: scale(0.8);
-  transition: transform 0.2s ease;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(0.85);
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
   }
 
   h4 {
-    color: white;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
     text-align: center;
   }
 
   svg {
-    color: white;
-    font-size: 1.5rem;
+    color: var(--text-light);
+    font-size: 1.6rem;
   }
 
   &.active {
-    background: linear-gradient(to right, #f27121, #e94057);
+    background: var(--primary-color);
     svg {
       color: white;
     }
